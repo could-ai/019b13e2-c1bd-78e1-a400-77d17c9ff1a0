@@ -45,11 +45,17 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   void _onMove(String from, String to) {
-    final move = _chess.move({'from': from, 'to': to, 'promotion': 'q'});
+    // A função move() retorna bool na versão atual do pacote chess
+    final success = _chess.move({'from': from, 'to': to, 'promotion': 'q'});
     
-    if (move != null) {
+    if (success) {
       setState(() {
-        _moveHistory.add(move['san'] ?? '$from$to');
+        // Recupera o último movimento em notação SAN do histórico
+        if (_chess.history.isNotEmpty) {
+          _moveHistory.add(_chess.history.last);
+        } else {
+          _moveHistory.add('$from$to');
+        }
         _updateStatus();
       });
 

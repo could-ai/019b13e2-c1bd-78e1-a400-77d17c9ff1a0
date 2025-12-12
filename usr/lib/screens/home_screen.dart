@@ -48,7 +48,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 16),
             _buildMenuButton(
               context,
-              icon: Icons.analysis,
+              icon: Icons.analytics, // Changed from Icons.analysis to Icons.analytics
               title: 'Tabuleiro de Análise',
               subtitle: 'Estude movimentos livremente',
               color: Colors.green.shade100,
